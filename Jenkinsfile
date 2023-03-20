@@ -12,7 +12,7 @@ pipeline{
                     withSonarQubeEnv(credentialsId: 'Sonar-token') {       
                             echo 'execute permission to gradlew'                   
                             sh 'chmod +x gradlew'
-                            sh './gradlew sonarqube --scan'
+                            sh './gradlew sonarqube --warning-mode all'
                     }
 
                 }
