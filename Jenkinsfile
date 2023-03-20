@@ -13,7 +13,7 @@ pipeline{
                             echo 'execute permission to gradlew'                   
                             sh 'chmod +x gradlew'
                             sh './gradlew --stop'
-                            sh './gradlew sonarqube'
+                            sh './gradlew sonarqube --debug output'
                     }
 
                 }
