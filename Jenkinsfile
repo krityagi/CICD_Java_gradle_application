@@ -9,7 +9,8 @@ pipeline{
             }
             steps{
                 script{
-                    withSonarQubeEnv(credentialsId: 'Sonar-token') {                         
+                    withSonarQubeEnv(credentialsId: 'Sonar-token') {       
+                            echo 'execute permission to gradlew'                   
                             sh 'chmod +x gradlew'
                             sh './gradlew sonarqube --warning-mode fail --stacktrace'
                     }
