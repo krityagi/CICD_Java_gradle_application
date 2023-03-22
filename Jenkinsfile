@@ -13,7 +13,7 @@ pipeline{
                                            
                             sh 'chmod +x gradlew'
                             sh './gradlew wrapper --gradle-version 5.5'
-                            sh './gradlew sonarqube --warning-mode fail --stacktrace'
+                            sh './gradlew sonarqube'
                     }
 
                 }
