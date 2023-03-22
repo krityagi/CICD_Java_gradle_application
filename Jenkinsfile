@@ -13,7 +13,7 @@ pipeline{
                                            
                             sh 'chmod +x gradlew'
                             sh './gradlew wrapper --gradle-version 6.8.2'
-                            sh './gradlew sonarqube'
+                            sh './gradlew sonarqube --scan'
                     }
 
                 }
