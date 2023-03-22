@@ -13,12 +13,6 @@ sourceCompatibility = '1.8'
 repositories {
 	mavenCentral()
 }
-apply plugin: 'com.gradle.build-scan'
-
-buildScan {
-    licenseAgreementUrl = 'https://gradle.com/terms-of-service'
-    licenseAgree = 'yes'
-}
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
