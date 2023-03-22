@@ -12,7 +12,7 @@ pipeline{
                     withSonarQubeEnv(credentialsId: 'Sonar-token') {       
                                            
                             sh 'chmod +x gradlew'
-                            sh './gradlew wrapper --gradle-version 5.5'
+                            sh './gradlew wrapper --gradle-version 7.1.1'
                             sh './gradlew sonarqube'
                     }
 
