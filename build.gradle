@@ -4,6 +4,7 @@ plugins {
 	id 'java'
 	id 'war'
 	id 'org.sonarqube' version '3.3'
+	id 'com.gradle.build-scan'
 }
 
 group = 'com.example'
@@ -12,6 +13,11 @@ sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
+}
+
+buildScan {
+    licenseAgreementUrl = 'https://gradle.com/terms-of-service'
+    licenseAgree = 'yes'
 }
 
 dependencies {
