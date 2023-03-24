@@ -32,6 +32,7 @@ pipeline{
                             docker build -t 34.125.9.155:8083/springapp:${VERSION} .
                             docker login -u admin -p $nexus_password 34.125.9.155:8083
                             docker push 34.125.9.155:8083/springapp:${VERSION}
+                            echo "Deleting the docker image"
                             docker rmi 34.125.9.155:8083/springapp:${VERSION}
 
                         '''
