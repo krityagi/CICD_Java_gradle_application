@@ -2,6 +2,7 @@ pipeline{
     agent any
     environment{
         VERSION = "${env.BUILD_ID}"
+        NEXUS_URL = "34.125.222.46:8083"
     }
     stages{
         stage("Sonar quality Check"){
@@ -29,11 +30,11 @@ pipeline{
                 script{
                     withCredentials([string(credentialsId:'nexus_creds', variable: 'nexus_password')]) {
                         sh '''
-                            docker build -t 34.125.9.155:8083/springapp:${VERSION} .
-                            docker login -u admin -p $nexus_password 34.125.9.155:8083
-                            docker push 34.125.9.155:8083/springapp:${VERSION}
+                            docker build -t ${NEXUS_URL}/springapp:${VERSION} .
+                            docker login -u admin -p $nexus_password ${NEXUS_URL}
+                            docker push ${NEXUS_URL}/springapp:${VERSION}
                             echo "Deleting the docker image"
-                            docker rmi 34.125.9.155:8083/springapp:${VERSION}
+                            docker rmi ${NEXUS_URL}/springapp:${VERSION}
 
                         '''
                     }
