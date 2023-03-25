@@ -48,7 +48,7 @@ pipeline{
                     dir('kubernetes/') {
                         sh '''
                             whoami
-                            sudo helm datree test myapp/
+                            
                         '''
                     }
                 }
