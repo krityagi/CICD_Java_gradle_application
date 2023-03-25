@@ -47,7 +47,7 @@ pipeline{
                 script{
                     dir('kubernetes/') {
                         sh '''
-                            echo "running helm with datree"
+                            whoami
                             helm datree test myapp/
                         '''
                     }
