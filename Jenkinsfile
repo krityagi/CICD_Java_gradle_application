@@ -46,7 +46,7 @@ pipeline{
             steps{
                 script{
                     dir('kubernetes/') {
-                        sh 'helm list'
+                        sh 'helm datree test myapp/'
                     }
                 }
             }
