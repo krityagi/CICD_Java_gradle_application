@@ -48,7 +48,7 @@ pipeline{
                     dir('kubernetes/') {
                         sh '''
                             whoami
-                            
+                            helm datree test myapp/
                         '''
                     }
                 }
@@ -69,6 +69,18 @@ pipeline{
                         }
                     }
                     
+                }
+            }
+        }
+        stage('Deploying application ok K8s cluster') {
+            steps {
+                script{
+                    withCredentials([file(credentialsId: 'kube', variable: 'KUBECONFIG')]) {
+                        dir ("kubernetes/"){  
+                            sh 'helm list'
+                            sh 'helm upgrade --install --set image.repository="34.125.222.46:8083/springapp" --set image.tag="${VERSION}" myjavaapp myapp/ ' 
+                        }
+                    }
                 }
             }
         }
