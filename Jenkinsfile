@@ -25,23 +25,23 @@ pipeline{
                 }
             }
         }
-        // stage("docker build & docker push"){
-        //     steps{
-        //         script{
-        //             withCredentials([string(credentialsId:'nexus_creds', variable: 'nexus_password')]) {
-        //                 sh '''
-        //                     docker build -t ${NEXUS_URL}/springapp:${VERSION} .
-        //                     docker login -u admin -p $nexus_password ${NEXUS_URL}
-        //                     docker push ${NEXUS_URL}/springapp:${VERSION}
-        //                     echo "Deleting the docker image"
-        //                     docker rmi ${NEXUS_URL}/springapp:${VERSION}
+        stage("docker build & docker push"){
+            steps{
+                script{
+                    withCredentials([string(credentialsId:'nexus_creds', variable: 'nexus_password')]) {
+                        sh '''
+                            docker build -t ${NEXUS_URL}/springapp:${VERSION} .
+                            docker login -u admin -p $nexus_password ${NEXUS_URL}
+                            docker push ${NEXUS_URL}/springapp:${VERSION}
+                            echo "Deleting the docker image"
+                            docker rmi ${NEXUS_URL}/springapp:${VERSION}
 
-        //                 '''
-        //             }
+                        '''
+                    }
                     
-        //         }
-        //     }
-        // }
+                }
+            }
+        }
         // stage('identifying misconfigs using datree in helm charts'){
         //     steps{
         //         script{
